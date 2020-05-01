@@ -51,7 +51,7 @@ namespace BookStore_API
             }
 
             app.UseHttpsRedirection();
-            app.UseStaticFiles();
+           // app.UseStaticFiles();
 
             app.UseRouting();
 
@@ -60,7 +60,7 @@ namespace BookStore_API
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapRazorPages();
+                endpoints.MapControllers();
             });
         }
     }

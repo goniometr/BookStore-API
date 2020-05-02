@@ -15,6 +15,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
 using System.IO;
+using BookStore_API.Contracts;
+using BookStore_API.Services;
 
 namespace BookStore_API
 {
@@ -50,6 +52,7 @@ namespace BookStore_API
                 c.IncludeXmlComments(xpath);
             });
 
+            services.AddSingleton<ILoggerService, LoggerService>();
             services.AddRazorPages();
         }
 

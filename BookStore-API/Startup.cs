@@ -37,6 +37,12 @@ namespace BookStore_API
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddCors(o=>
+                {
+                    o.AddPolicy("CorsPolicy",
+                      builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+            
+            });
 
             services.AddSwaggerGen(c =>
             {
@@ -79,7 +85,9 @@ namespace BookStore_API
             });
 
             app.UseHttpsRedirection();
-           // app.UseStaticFiles();
+            // app.UseStaticFiles();
+
+            app.UseCors("CorsPolicy");
 
             app.UseRouting();
 
